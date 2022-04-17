@@ -3,6 +3,29 @@
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // BANKIST APP
+let currentUser, timer;
+
+const logOutTimer = function () {
+  var time = 120;
+  const tick = () => {
+
+    const min = String(Math.trunc(time / 60)).padStart(2, 0);
+    const sec = String(time % 60).padStart(2, 0);
+    labelTimer.textContent = `${min}:${sec}`;
+
+    if (time === 0) {
+      clearInterval(timer);
+      labelWelcome.textContent = 'Login to get started';
+      containerApp.style.opacity = 0;
+    }
+
+    time--;
+  }
+
+  tick();
+  timer = setInterval(tick, 1000);
+  return timer;
+}
 
 // Data
 const account1 = {
@@ -226,32 +249,13 @@ const updateUI = function (currentUser) {
 
   // Display summary.
   calcDisplaySummary(currentUser);
+  clearInterval(timer);
+  timer = logOutTimer();
 }
 
-let currentUser, timer;
 // Event handlers
 
-const logOutTimer = function () {
-  var time = 120;
-  const tick = () => {
 
-    const min = String(Math.trunc(time / 60)).padStart(2, 0);
-    const sec = String(time % 60).padStart(2, 0);
-    labelTimer.textContent = `${min}:${sec}`;
-
-    if (time === 0) {
-      clearInterval(timer);
-      labelWelcome.textContent = 'Login to get started';
-      containerApp.style.opacity = 0;
-    }
-
-    time--;
-  }
-
-  tick();
-  timer = setInterval(tick, 1000);
-  return timer;
-}
 
 // Login
 btnLogin.addEventListener('click', function (e) {
