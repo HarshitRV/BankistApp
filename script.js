@@ -6,7 +6,7 @@
 
 // Data
 const account1 = {
-  owner: 'Jonas Schmedtmann',
+  owner: 'Harshit Vishwakarma',
   movements: [5000, 1202, 1303, 200, 455.23, -306.5, 25000, -642.21, -133.9, 79.97, 1300],
   interestRate: 1.2, // %
   pin: 1111,
@@ -29,7 +29,7 @@ const account1 = {
 };
 
 const account2 = {
-  owner: 'Jessica Davis',
+  owner: 'Rohit Vishwakarma',
   movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
   interestRate: 1.5,
   pin: 2222,
@@ -232,7 +232,7 @@ let currentUser, timer;
 // Event handlers
 
 const logOutTimer = function () {
-  var time = 30;
+  var time = 120;
   const tick = () => {
 
     const min = String(Math.trunc(time / 60)).padStart(2, 0);
@@ -350,9 +350,9 @@ btnSort.addEventListener('click', function () {
 })
 
 // FAKE ALWAYS LOGGED IN
-currentUser = account1;
-updateUI(currentUser);
-containerApp.style.opacity = 100;
+// currentUser = account1;
+// updateUI(currentUser);
+// containerApp.style.opacity = 100;
 
 
 setInterval(() => getTodayDate(currentUser?.locale), 1000);
